@@ -84,7 +84,11 @@ public:
             #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
                 this->check_exit_static_inv();
             #endif
+#if __cplusplus > 201402 || (defined(_MSVC_LANG) && _MSVC_LANG > 201402)
+            if(std::uncaught_exceptions()) {
+#else
             if(std::uncaught_exception()) {
+#endif
                 #ifndef BOOST_CONTRACT_NO_EXCEPTS
                     this->check_except();
                 #endif

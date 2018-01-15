@@ -113,7 +113,11 @@ private:
                 #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
                     this->check_subcontracted_exit_inv();
                 #endif
+#if __cplusplus > 201402 || (defined(_MSVC_LANG) && _MSVC_LANG > 201402)
+                if(std::uncaught_exceptions()) {
+#else
                 if(std::uncaught_exception()) {
+#endif
                     #ifndef BOOST_CONTRACT_NO_EXCEPTS
                         this->check_subcontracted_except();
                     #endif
@@ -141,7 +145,11 @@ public:
                 #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
                     this->check_subcontracted_exit_inv();
                 #endif
+#if __cplusplus > 201402 || (defined(_MSVC_LANG) && _MSVC_LANG > 201402)
+                if(std::uncaught_exceptions()) {
+#else
                 if(std::uncaught_exception()) {
+#endif
                     #ifndef BOOST_CONTRACT_NO_EXCEPTS
                         this->check_subcontracted_except();
                     #endif

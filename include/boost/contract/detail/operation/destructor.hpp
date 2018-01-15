@@ -77,7 +77,11 @@ public:
             // language allows for that (even if in C++11 dtors declarations are
             // implicitly noexcept(true) unless specified otherwise) so this
             // library must handle such a case.
+#if __cplusplus > 201402 || (defined(_MSVC_LANG) && _MSVC_LANG > 201402)
+            if(std::uncaught_exceptions()) {
+#else
             if(std::uncaught_exception()) {
+#endif
                 #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
                     this->check_exit_all_inv();
                 #endif
