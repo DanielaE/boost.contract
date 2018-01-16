@@ -499,7 +499,7 @@ specify_precondition_old_postcondition_except<> public_function(Class* obj) {
         arity, /* is_friend = */ 0, has_virtual_result, \
         Override, VirtualResult, F, Class, Args, \
         v, r, f, obj, args \
-    ) { \
+    ) { (void)f; \
         BOOST_PP_IIF(BOOST_CONTRACT_PUBLIC_FUNCTIONS_IMPL_, \
             { /* extra scope paren to expand STATIC_STATIC emu on same line */ \
                 /* assert not strictly necessary as compilation will fail */ \

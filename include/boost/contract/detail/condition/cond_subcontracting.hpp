@@ -60,6 +60,11 @@
     #include <typeinfo>
 #endif
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4701)
+#endif
+
 namespace boost { namespace contract { namespace detail {
 
 namespace cond_subcontracting_ {
@@ -467,6 +472,10 @@ private:
 };
 
 } } } // namespace
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif // #include guard
 

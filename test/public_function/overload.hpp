@@ -15,6 +15,10 @@
 #include <sstream>
 #include <string>
 
+#ifdef BOOST_MSVC
+#pragma warning(disable: 4100)
+#endif
+
 boost::contract::test::detail::oteststream out;
 
 struct b {

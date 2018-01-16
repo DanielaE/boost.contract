@@ -86,6 +86,7 @@ specified in that order.
                 BOOST_CONTRACT_SPECIFY_COND_RELEASE_);
 #else
     #define BOOST_CONTRACT_SPECIFY_OLD_IMPL_ \
+        (void)f; \
         return specify_postcondition_except<VirtualResult>( \
                 BOOST_CONTRACT_SPECIFY_COND_RELEASE_);
 #endif
@@ -97,6 +98,7 @@ specified in that order.
         return specify_except(BOOST_CONTRACT_SPECIFY_COND_RELEASE_);
 #else
     #define BOOST_CONTRACT_SPECIFY_POSTCONDITION_IMPL_ \
+        (void)f; \
         return specify_except(BOOST_CONTRACT_SPECIFY_COND_RELEASE_);
 #endif
         
@@ -107,6 +109,7 @@ specified in that order.
         return specify_nothing(BOOST_CONTRACT_SPECIFY_COND_RELEASE_);
 #else
     #define BOOST_CONTRACT_SPECIFY_EXCEPT_IMPL_ \
+        (void)f; \
         return specify_nothing(BOOST_CONTRACT_SPECIFY_COND_RELEASE_);
 #endif
 

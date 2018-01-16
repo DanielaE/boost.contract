@@ -521,7 +521,7 @@ public:
     */
     template<typename T>
     /* implicit */ old_value(
-        T const& old,
+        T const&,
         typename boost::disable_if<boost::contract::is_old_value_copyable<T>
                 >::type* = 0
     ) {} // Leave ptr_ null (thus no copy of T).
@@ -589,7 +589,7 @@ private:
         #ifndef BOOST_CONTRACT_NO_OLDS
             : v_(v), untyped_copy_(old.untyped_copy_)
         #endif
-    {}
+    { (void)v; (void)old; }
     
     template<typename Ptr>
     Ptr get() {
@@ -796,6 +796,7 @@ inline bool copy_old(virtual_* v) {
         return v->action_ == boost::contract::virtual_::push_old_init_copy ||
                 v->action_ == boost::contract::virtual_::push_old_ftor_copy;
     #else
+        (void)v;
         return false; // No post checking, so never copy old values.
     #endif
 }

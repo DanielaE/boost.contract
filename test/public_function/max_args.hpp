@@ -19,6 +19,10 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <sstream>
 
+#ifdef BOOST_MSVC
+#pragma warning(disable: 4100)
+#endif
+
 boost::contract::test::detail::oteststream out;
         
 #define BOOST_CONTRACT_TEST_MAX_ARGS_PARAM_COMMA_(z, n, unused) \

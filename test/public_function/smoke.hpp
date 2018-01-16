@@ -19,6 +19,10 @@
 #include <boost/contract/override.hpp>
 #include <string>
 
+#ifdef BOOST_MSVC
+#pragma warning(disable: 4505)
+#endif
+
 boost::contract::test::detail::oteststream out;
 
 struct s_tag;

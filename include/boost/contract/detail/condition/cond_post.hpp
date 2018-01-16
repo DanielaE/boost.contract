@@ -29,6 +29,7 @@
     \
     protected: \
         void check_post(result_type const& result_param) { \
+            (void)result_param; \
             if(failed()) return; \
             try { if(ftor_var) { ftor_call; } } \
             catch(...) { fail(&boost::contract::postcondition_failure); } \

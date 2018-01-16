@@ -13,6 +13,11 @@
 #include <boost/detail/lightweight_test.hpp>
 #include <sstream>
 
+#ifdef BOOST_MSVC
+#pragma warning(disable: 4702) // unreachable code
+#pragma warning(disable: 4722) // 'b::~b': destructor never returns, potential memory leak
+#endif
+
 boost::contract::test::detail::oteststream out;
 
 struct c
